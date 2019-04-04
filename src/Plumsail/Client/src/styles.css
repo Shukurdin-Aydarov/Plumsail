@@ -1,0 +1,13 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.btn-space .btn{
+    margin-right: 5px;
+}
+.btn-space .btn:last-child{
+    margin-right: 0;
+}

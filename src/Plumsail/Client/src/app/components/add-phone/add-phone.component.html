@@ -1,0 +1,104 @@
+<div class="col-sm-6 offset-sm-3">
+    <form class="justify-content-center mt-2" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <h3 class="text text-center">Add new phone</h3>
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input class="form-control" formControlName="title" id="title" placeholder="Title">
+                <div class="alert alert-danger" *ngIf="form.controls.title.invalid && form.controls.title.touched">
+                    Title is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="price" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+                <input type="number" min="1" class="form-control" formControlName="price" id="price" placeholder="Price">
+                <div class="alert alert-danger" *ngIf="form.controls.price.invalid && form.controls.price.touched">
+                    Price is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="memory" class="col-sm-2 col-form-label">Memory (GB)</label>
+            <div class="col-sm-10">
+                <select class="form-control" formControlName="memory" id="memory" placeholder="Memory (GB)">
+                    <option *ngFor="let memory of memories" [value]="memory">{{memory}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="form.controls.memory.invalid && form.controls.memory.touched">
+                    Memory is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">Production date</div>
+            <div class="col-sm-10">
+                <input type="date" formControlName="productionDate" class="form-control" />
+                <div class="alert alert-danger"
+                    *ngIf="form.controls.productionDate.invalid && form.controls.productionDate.touched">
+                    <span *ngIf="form.controls.productionDate.errors.required">
+                        Production date is required
+                    </span>
+                    <span *ngIf="form.controls.productionDate.errors['date-minimum']">
+                        Production date must be after 01-01-1900
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">NFC</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="nfc" type="checkbox" id="nfc">
+                    <label class="form-check-label" for="nfc">
+                        Is NFC supported?
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Color</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="color" type="radio" name="color"
+                            id="black-color" value="black">
+                        <label class="form-check-label" for="black-color">
+                            Black
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="color" type="radio" name="color"
+                            id="gold-color" value="gold">
+                        <label class="form-check-label" for="gold-color">
+                            Gold
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="color" type="radio" name="color"
+                            id="white-color" value="white">
+                        <label class="form-check-label" for="white-color">
+                            White
+                        </label>
+                    </div>
+
+                    <div class="alert alert-danger"
+                        *ngIf="form.controls.color.invalid && form.controls.color.touched">
+                        Color is required
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="d-flex justify-content-between form-group">
+            <button type="submit" class="btn btn-secondary" (click)="goHome()">Go home</button>
+
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add to list</button>
+        </div>
+    </form>
+</div>

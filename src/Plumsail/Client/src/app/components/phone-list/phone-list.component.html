@@ -1,0 +1,26 @@
+<div class="col-sm-6 offset-sm-3">
+    <div class="d-flex flex-column">
+        <h3 class="text-center">Phone list</h3>
+        <div class="active-cyan-4 mb-4">
+            <input class="form-control" [formControl]="searchControl" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <!--Todo: Have to fix inline style-->
+        <cdk-virtual-scroll-viewport style="height: 400px;" itemSize="90">
+          <ng-container *cdkVirtualFor="let phone of phones">
+            <div class="card border-dark mb-3">
+              <div class="card-header">{{phone.title}}</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Price: {{phone.price}}</p>
+                <p class="card-text">NFC: {{phone.nfc}}</p>
+                <p class="card-text">Production date: {{phone.productionDate | date:'shortDate'}}</p>
+                <p class="card-text">Color: {{phone.color}}</p>
+                <p class="card-text">Memory: {{phone.memory}}</p>
+              </div>
+            </div>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+        <div class="d-flex mt-2">
+            <button class="btn btn-primary" (click)="goHome()">Go home</button>
+        </div>
+    </div>
+</div>
