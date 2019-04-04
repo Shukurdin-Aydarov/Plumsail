@@ -8,8 +8,9 @@ namespace Plumsail.Core.Repositories
     {
         public Context(DbContextOptions<Context> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
-        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Phone> Phones { get; set; }
     }
 }

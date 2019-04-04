@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,6 +29,8 @@ namespace Plumsail
                 .ConfigureValidation()
                 .RegisterModelServices()
                 .ConfigureLocalization();
+
+            services.AddSpaStaticFiles(options => options.RootPath = "Client/dist");
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -36,7 +39,18 @@ namespace Plumsail
                 app.UseDeveloperExceptionPage();
 
             app.UseRequestLocalization();
+
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
             app.UseMvc();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "Client";
+
+                if (env.IsDevelopment())
+                    spa.UseAngularCliServer(npmScript: "start");
+            });
         }
     }
 }

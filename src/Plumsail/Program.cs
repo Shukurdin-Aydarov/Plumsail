@@ -9,7 +9,6 @@ namespace Plumsail
         {
             CreateWebHostBuilder(args)
                 .Build()
-                .MigrateDatabase()
                 .Run();
         }
 

@@ -6,19 +6,21 @@ using Plumsail.Core.Models;
 
 namespace Plumsail.Core.Localization
 {
-    public class ContactLocalizer : IStringLocalizer<Contact>
+    public class PhoneLocalizer : IStringLocalizer<Phone>
     {
-        public static readonly string NameRequired = "Name is required";
-        public static readonly string SurnameRequired = "Surname is required";
-        public static readonly string GenderRequired = "Gender is required";
-        public static readonly string BirthDateInvalid = "Date of birth is invalid";
+        public static readonly string TitleRequired = "Title is required";
+        public static readonly string PriceInvalid = "Invalid price";
+        public static readonly string ColorRequired = "Color is required";
+        public static readonly string ProductionDateInvalid = "Invalid production date";
+        public static readonly string MemoryInvalid = "Invalid memory";
 
         private readonly Dictionary<string, string> messages = new Dictionary<string, string>
         {
-            { NameRequired, NameRequired },
-            { SurnameRequired, SurnameRequired },
-            { GenderRequired, GenderRequired },
-            { BirthDateInvalid, BirthDateInvalid }
+            { TitleRequired, TitleRequired },
+            { PriceInvalid, PriceInvalid },
+            { ColorRequired, ColorRequired },
+            { ProductionDateInvalid, ProductionDateInvalid },
+            { MemoryInvalid, MemoryInvalid }
         };
 
         public LocalizedString this[string name] {

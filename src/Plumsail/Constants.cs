@@ -1,6 +1,7 @@
 ﻿namespace Plumsail
 {
-    public static class Conctants
+    //Todo: rename
+    public static class Constants
     {
         public static readonly string DefaultConnection = "DefaultConnection";
     }

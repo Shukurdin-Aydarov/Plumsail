@@ -17,7 +17,7 @@ namespace Plumsail
         public static IServiceCollection ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             var connection = configuration
-                .GetConnectionString(Conctants.DefaultConnection);
+                .GetConnectionString(Constants.DefaultConnection);
 
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(connection));
@@ -27,17 +27,17 @@ namespace Plumsail
 
         public static IServiceCollection RegisterModelServices(this IServiceCollection services)
         {
-            return services.AddScoped<IContactService, ContactService>();
+            return services.AddScoped<IPhoneService, PhoneService>();
         }
 
         public static IServiceCollection ConfigureValidation(this IServiceCollection services)
         {
-            return services.AddTransient<IValidator<Contact>, ContactValidator>();
+            return services.AddTransient<IValidator<Phone>, PhoneValidator>();
         }
 
         public static IServiceCollection ConfigureLocalization(this IServiceCollection services)
         {
-            return services.AddTransient<IStringLocalizer<Contact>, ContactLocalizer>();
+            return services.AddTransient<IStringLocalizer<Phone>, PhoneLocalizer>();
         }
     }
 }

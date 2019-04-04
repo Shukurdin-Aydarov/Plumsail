@@ -5,9 +5,9 @@ using Plumsail.Core.Models;
 
 namespace Plumsail.Core.Services
 {
-    public interface IContactService
+    public interface IPhoneService
     {
-        Task<IEnumerable<Contact>> GetContactsAsync();
-        Task<Contact> AddAsync(Contact contact);
+        Task<IEnumerable<Phone>> GetAsync(string title);
+        Task<Phone> AddAsync(Phone phone);
     }
 }

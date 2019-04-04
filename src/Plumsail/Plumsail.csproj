@@ -3,7 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Client\src\app\components\home\home.component.ts" />
+    <None Remove="Client\src\app\components\phone-list\phone-list.component.ts" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.2.0" />
@@ -13,6 +19,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Plumsail.Core\Plumsail.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Client\src\app\components\home\home.component.ts" />
+    <TypeScriptCompile Include="Client\src\app\components\phone-list\phone-list.component.ts" />
   </ItemGroup>
 
 </Project>
